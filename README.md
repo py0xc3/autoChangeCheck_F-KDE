@@ -2,7 +2,7 @@
 
 This tool automates the check for changes related to the package maintenance of KDE packages within Fedora: it identifies KDE-sided and Fedora-sided changes. It's intended to make the packager aware of changes that could be relevant for their packaging pipeline and that justify a review of the pipeline: it's intentional fragile and quickly informs the packager that they have to review something (it's not proven everything is relevant to packaging, but the review/decision is left to the packager). Some changes just change variables, some raise exceptions: both is intended in this tool, and both will be considered in the output to the log file. It aims to tackle the type of case in which a packager has a broken pipeline for a year or two without noticing.
 
-This tool does NOT do anything but checking if changes have occurred in either distgit (Fedora) or sourcegit (invent.KDE) or download.kde.org/stable/release-service, and if any of that has been changed, inform the user. 
+This tool does NOT do anything but checking if changes have occurred in either distgit (Fedora) or sourcegit (invent.KDE) or download.kde.org/stable/release-service (intentionally partially redundant checks), and if any of that has been changed, inform the user. 
 
 ## Presumptions of this experimental tool!
 
@@ -12,7 +12,7 @@ The repos in "distgit/" and "sourcegit/" are **not** suitable to work in: after 
 
 This tool is experimental and was originally intended only to temporarily fill a gap in my workflow. The tool has little fault tolerance and presumes several conditions that must be ensured by the environment in which this tool is deployed. The tool is intended to fit my workflow and is intended to fulfill only a very specific and limited task. Be careful with it (and know the implications of the presumptions). This is **not** an official KDE or Fedora tool.
 
-Maybe I add later a partially-redundant check for package-related changes in https://download.kde.org/stable/release-service/. Maybe I will improve the tool over time and replace some presumptions with appropriate checks and better exception handling, but maybe I use this tool only as short-term mitigation.
+Maybe I will improve the tool over time and replace some presumptions with appropriate checks and better exception handling, but maybe I use this tool only as short-term mitigation.
 
 
 ## How to use this tool:
