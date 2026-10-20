@@ -2,7 +2,7 @@
 
 This tool automates the check for changes related to the package maintenance of KDE packages within Fedora: it identifies KDE-sided and Fedora-sided changes. It's intended to make the packager aware of changes that could be relevant for their packaging pipeline and that justify a review of the pipeline: it's intentional fragile and quickly informs the packager that they have to review something (it's not proven everything is relevant to packaging, but the review/decision is left to the packager). Some changes just change variables, some raise exceptions: both is intended in this tool, and both will be considered in the output to the log file. It aims to tackle the type of case in which a packager has a broken pipeline for a year or two without noticing.
 
-This tool does NOT do anything but checking if changes have occurred in either distgit (Fedora) or sourcegit (invent.KDE), and if any of that has been changed, inform the user. 
+This tool does NOT do anything but checking if changes have occurred in either distgit (Fedora) or sourcegit (invent.KDE) or download.kde.org/stable/release-service, and if any of that has been changed, inform the user. 
 
 ## Presumptions of this experimental tool!
 
