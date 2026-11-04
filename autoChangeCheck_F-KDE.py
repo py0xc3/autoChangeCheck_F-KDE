@@ -10,6 +10,9 @@ from datetime import date
 from getpass import getuser
 from requests import get
 from argparse import ArgumentParser
+from time import sleep
+from sys import exit
+
 
 # Preparation: get the working dir
 parsedfolder = ArgumentParser(
@@ -20,6 +23,21 @@ parsedfolder.add_argument("working_directory")
 folder = parsedfolder.parse_args().working_directory
 if folder[0-1] != "/":
     folder = folder + "/"
+
+# Check if there is an Internet connection: give up after 5 minutes
+for x in range(0,10,1):
+    sleep(30)
+    internet = get("https://fedoraproject.org/static/hotspot.txt").status_code
+    if internet == 200:
+        break
+if internet != 200:
+    message = str(date.today()) + " NEW ENTRY \n"
+    message = (message + "InternetBroke_value_"
+               + str(internet)
+               + " \n")
+    with open("/home/"+getuser()+"/Desktop/PackageToDo.txt", "a") as f:
+        f.write(message)
+    exit(1)
 
 # see README.md: the tool is not fault tolerant and works
 # with many presumptions. The initial try/exception ensures
@@ -140,6 +158,7 @@ try:
         # BEGIN TESTING
         message = message + "TESTING: add a line for each invocation!\n"
         # TESTING END
+
 
         # Create or append to the ToDo files:
         if message != str(date.today()) + " NEW ENTRY \n":
