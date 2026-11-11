@@ -25,6 +25,7 @@ if folder[0-1] != "/":
     folder = folder + "/"
 
 # Check if there is an Internet connection: give up after 5 minutes
+sleep(20)
 for x in range(0,10,1):
     sleep(30)
     internet = get("https://fedoraproject.org/static/hotspot.txt").status_code
@@ -152,13 +153,6 @@ try:
             message = (message + "downloadkdebroken_value_"
                        + str(downloadkdebroken)
                        + " \n")
-
-        # THE SUBSEQUENT "message" LINE IS FOR THE TESTING PERIOD:
-        # DELETE THE TESTING LINE ONCE THE TOOL HAS PROVEN TO WORK!
-        # BEGIN TESTING
-        message = message + "TESTING: add a line for each invocation!\n"
-        # TESTING END
-
 
         # Create or append to the ToDo files:
         if message != str(date.today()) + " NEW ENTRY \n":
